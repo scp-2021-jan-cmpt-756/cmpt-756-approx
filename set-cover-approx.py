@@ -86,13 +86,13 @@ def optimum_set_cover(universe, setlist):
 def main(instance, args):
     ''' Run the selected algorithm and print the results '''
     if args.use_optimal:
-        start = time.monotonic()
+        start = time.perf_counter()
         cover = optimum_set_cover(instance.universe(), instance.set_of_sets())
-        end = time.monotonic()
+        end = time.perf_counter()
     else:
-        start = time.monotonic()
+        start = time.perf_counter()
         cover = set_cover(instance.universe(), instance.set_of_sets())
-        end = time.monotonic()
+        end = time.perf_counter()
     if args.check and not instance.check_solution(cover):
         print('*** Not a solution! ***')
     print(end-start)
